@@ -1,0 +1,27 @@
+      SUBROUTINE DLOAD(F,KSTEP,KINC,TIME,NOEL,NPT,LAYER,KSPT,
+     1 COORDS,JLTYP,SNAME)
+      INCLUDE 'ABA_PARAM.INC'
+      DIMENSION TIME(2), COORDS(3)
+      CHARACTER*80 SNAME
+
+      real x,y,v,s
+          x = COORDS(1)
+          y = COORDS(2)
+          v = 10000
+          s = v * TIME(1)
+          c1 = 3400
+          c2 = 4000
+          c3 = 6000
+          c4 = 6600
+              if ((y>=c1 .AND. y<=c2) .OR. (y>=c3 .AND. y<=c4)) then
+                  if(x>s -3500.AND.x<s) then
+                      F = 0.66
+                  else
+                      F = 0
+                  endif
+              else
+                  F = 0
+              endif
+
+      RETURN
+      END
